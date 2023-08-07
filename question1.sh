@@ -11,13 +11,17 @@ if [ ! -d "$directory" ]; then
     exit 1
 fi
 for url in "${@:2}"; do
-    if curl -o "${directory}/$(basename "$url")_$(date +"%Y%m%d_%H%M%S").jpg" -s -L "$url"; then
-        echo "Downloaded: $url"
+    if wget --no-check-certificate -P "$directory" "$url";then
+    #if curl -o "${directory}/$(basename "$url")_$(date +"%Y%m%d_%H%M%S").jpg" -s -L "$url"; then
+        echo "Downloaded"
     else
-        echo "Failed to download: $url"
+        echo "Failed to download"
     fi
 done
 
-archive_filename="${directory}_$(date +"%Y%m%d_%H%M%S").zip"
 
-zip -q -j "$archive_filename" "$directory"
+archive_filename="${directory}_$(date +"%Y%m%d_%H%M%S").zip"
+zip -q -j "$archive_filename" "$directory"/*
+
+
+
