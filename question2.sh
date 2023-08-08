@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+//nnnn
+
 filename="$1"
 if [ $# -lt 1 ]; then
    echo "error-invalid input"
