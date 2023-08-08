@@ -1,7 +1,14 @@
 #!/bin/bash
 
 filename="$1"
-delimiter="$2"
+if [ $# -lt 1 ]; then
+   echo "error-invalid input"
+   exit 1
+elif [ $# -lt 2 ]; then
+   delimiter=" "
+else
+   delimiter="$2"
+fi
 
 i=1
 if [ ! -f "$filename" ]; then
