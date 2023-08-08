@@ -1,0 +1,41 @@
+#!/bin/bash
+
+
+
+# Read system users file
+
+while IFS=':' read -r username password userid groupid user_info homedir shell; do
+
+    # Ignore system users and empty lines
+
+    if [[ "$userid" -ge 1000 && "$userid" -lt 65534 ]]; then
+
+        # Remove leading/trailing spaces from the home directory path
+
+        homedir=$(echo "$homedir" | tr -d ' ')
+
+        # Build the user information array
+
+        USERS["$username,username"]=$username
+
+        USERS["$username,userid"]=$userid
+
+        USERS["$username,homedir"]=$homedir
+
+        USERS["$username,password"]=$password
+
+    fi
+
+done < /etc/passwd
+
+echo ${USERS[@]}
+
+
+
+# Print the generated matrix
+
+for key in "${!USERS[@]}"; do
+
+    echo "USERS["$key"]="${USERS[$key]}
+
+done
