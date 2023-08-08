@@ -1,7 +1,7 @@
 #!/bin/bash
 #ensures that there are at least 2 arguments
 if [ $# -lt 2 ]; then
-    echo "Invalid format of input"
+    echo "Invalid format of input: enter a dir's path,images url"
     exit 1
 fi
 

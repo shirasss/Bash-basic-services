@@ -1,11 +1,8 @@
 #!/bin/bash
 
-
-//nnnn
-
 filename="$1"
 if [ $# -lt 1 ]; then
-   echo "error-invalid input"
+   echo "error-invalid input:please enter a local file name,a delimiter for spliting the file "
    exit 1
 elif [ $# -lt 2 ]; then
    delimiter=" "
