@@ -1,6 +1,7 @@
 #!/bin/bash
-# Associative array to map letters to their decimal values
+
 sum=0
+#print the letters value:
 Summary_of_letters(){
 letters=$@
   for letter in $letters; do
