@@ -5,6 +5,6 @@ choice="$1"
           echo "internal problem,sorry"
           exit 1
       fi
-      ./question$choice.sh ${@:2}
+      ./question${choice:1:1}.sh ${@:2}
    
        
