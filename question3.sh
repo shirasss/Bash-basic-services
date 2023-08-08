@@ -18,18 +18,21 @@ declare -A count_map
 echo "Enter numbers between 1 and 10 (press Ctrl+D to finish):"
 
 while read -r num; do
-  if [[ "$num" =~ ^[1-9]$|^10$ ]]; then
-    if [[ -n "${count_map[$num]}" ]]; then
-      count_map[$num]=$((count_map[$num] + 1))
+  for digit in $(echo "$num" | grep -o .); do
+    if [[ "$digit" =~ ^[1-9]$|^10$ ]]; then
+      if [[ -n "${count_map[$digit]}" ]]; then
+        count_map[$digit]=$((count_map[$digit] + 1))
+      else
+        count_map[$digit]=1
+      fi
     else
-      count_map[$num]=1
+      echo "Invalid input: $digit (Ignoring)"
     fi
-  else
-    echo "Invalid input: $num (Ignoring)"
-  fi
+  done
 done
 
 echo "Number statistics:"
+
 for num in "${!count_map[@]}"; do
   word="${num_map[$num]}"
   count="${count_map[$num]}"
