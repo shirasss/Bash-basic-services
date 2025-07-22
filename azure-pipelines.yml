@@ -15,5 +15,5 @@ steps:
   displayName: 'Run a one-line script'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
+    docker --version
   displayName: 'Run a multi-line script'
