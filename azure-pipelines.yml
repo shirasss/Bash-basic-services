@@ -15,5 +15,5 @@ steps:
   displayName: 'Run a one-line script'
 
 - script: |
-    docker --version
-  displayName: 'Run a multi-line script'
+    docker images
+  displayName: 'test docker'
